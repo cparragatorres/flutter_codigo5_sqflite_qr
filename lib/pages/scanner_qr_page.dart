@@ -15,6 +15,7 @@ class _ScannerQRPageState extends State<ScannerQRPage> {
   QRViewController? controller;
   String patternUrl = r'(http|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?';
   bool isUrl = false;
+  String _dataUrl = "";
 
   @override
   void reassemble() {
@@ -53,9 +54,8 @@ class _ScannerQRPageState extends State<ScannerQRPage> {
       setState(() {
         result = scanData;
         if(result != null){
-          String _data = result!.code!;
-          isUrl = regExp.hasMatch(_data);
-          print("xxxxxxxxxxxxxxxxxxxxxxxx ${isUrl}");
+          _dataUrl = result!.code!;
+          isUrl = regExp.hasMatch(_dataUrl);
         }
       });
     });
@@ -101,7 +101,7 @@ class _ScannerQRPageState extends State<ScannerQRPage> {
                     height: 6.0,
                   ),
                   Text(
-                    "Por favor escanea un carnet",
+                    isUrl ? _dataUrl : "Por favor escanea un carnet",
                     //"https://www.runtastic.com/blog/es/reto-de-28-dias-entrenando-en-casa-para-principiantes/ https://www.runtastic.com/blog/es/reto-de-28-dias-entrenando-en-casa-para-principiantes/",
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
