@@ -45,6 +45,9 @@ class HomePage extends StatelessWidget {
                   ItemListWidget(),
                   ItemListWidget(),
                   ItemListWidget(),
+                  const SizedBox(
+                    height: 70.0,
+                  ),
                 ],
               ),
             ),
@@ -57,7 +60,19 @@ class HomePage extends StatelessWidget {
               margin: const EdgeInsets.all(12.0),
               child: ElevatedButton.icon(
                 onPressed: () {},
-                label: Text("Escaner QR"),
+                style: ElevatedButton.styleFrom(
+                  primary: kBrandPrimaryColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14.0),
+                  ),
+                ),
+                label: const Text(
+                  "Escaner QR",
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
                 icon: SvgPicture.asset(
                   'assets/icons/bx-qr-scan.svg',
                   color: Colors.white,
