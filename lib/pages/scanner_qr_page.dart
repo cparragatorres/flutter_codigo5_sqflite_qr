@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_codigo5_sqflite_qr/pages/register_page.dart';
 import 'package:flutter_codigo5_sqflite_qr/ui/general/colors.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
@@ -106,7 +107,7 @@ class _ScannerQRPageState extends State<ScannerQRPage> {
                     //"https://www.runtastic.com/blog/es/reto-de-28-dias-entrenando-en-casa-para-principiantes/ https://www.runtastic.com/blog/es/reto-de-28-dias-entrenando-en-casa-para-principiantes/",
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: kFontPrimaryColor,
                       fontWeight: FontWeight.w500,
                     ),
@@ -125,8 +126,9 @@ class _ScannerQRPageState extends State<ScannerQRPage> {
                           borderRadius: BorderRadius.circular(14.0),
                         ),
                       ),
-                      onPressed: isUrl ? () {
-                        // Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
+                      onPressed: !isUrl ? () {
+                        Navigator.pop(context);
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> RegisterPage()));
                       } : null,
                       child: const Text(
                         "Registrar carnet",
