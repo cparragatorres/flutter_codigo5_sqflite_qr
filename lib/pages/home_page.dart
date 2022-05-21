@@ -22,34 +22,51 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(14.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Mis carnets registrados",
-                style: TextStyle(
-                  fontSize: 16.0,
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Mis carnets registrados",
+                    style: TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  ItemListWidget(),
+                  ItemListWidget(),
+                  ItemListWidget(),
+                  ItemListWidget(),
+                  ItemListWidget(),
+                  ItemListWidget(),
+                  ItemListWidget(),
+                  ItemListWidget(),
+                  ItemListWidget(),
+                ],
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              height: 52.0,
+              width: double.infinity,
+              margin: const EdgeInsets.all(12.0),
+              child: ElevatedButton.icon(
+                onPressed: () {},
+                label: Text("Escaner QR"),
+                icon: SvgPicture.asset(
+                  'assets/icons/bx-qr-scan.svg',
+                  color: Colors.white,
                 ),
               ),
-              ItemListWidget(),
-              ItemListWidget(),
-              ItemListWidget(),
-              ItemListWidget(),
-              ItemListWidget(),
-              ItemListWidget(),
-              ItemListWidget(),
-              ItemListWidget(),
-              ItemListWidget(),
-
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
 }
-
-
