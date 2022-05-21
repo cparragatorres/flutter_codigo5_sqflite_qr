@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_codigo5_sqflite_qr/ui/general/colors.dart';
 import 'package:flutter_codigo5_sqflite_qr/ui/widgets/input_textfield_widget.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -52,6 +53,13 @@ class _RegisterPageState extends State<RegisterPage> {
                     text: "DNI",
                     icon: "bx-card",
                   ),
+
+                  QrImage(
+                    data: "https://www.youtube.com/watch?v=34Na4j8AVgA&ab_channel=TheWeekndVEVO",
+                    version: QrVersions.auto,
+                    size: 220.0,
+                  ),
+
                 ],
               ),
             ),
