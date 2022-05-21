@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_codigo5_sqflite_qr/pages/home_page.dart';
+import 'package:flutter_codigo5_sqflite_qr/ui/general/colors.dart';
 
 class IntroPage extends StatelessWidget {
   const IntroPage({Key? key}) : super(key: key);
@@ -12,7 +13,7 @@ class IntroPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Text(
+            const Text(
               "Tu carnet de vacunación",
               style: TextStyle(
                   fontSize: 46.0,
@@ -23,7 +24,7 @@ class IntroPage extends StatelessWidget {
             const SizedBox(
               height: 12.0,
             ),
-            Text(
+            const Text(
               "Con esta App podrás gestionar los carnets de las personas que más prefieras. No olvides ser responsable",
               style: TextStyle(
                   fontSize: 16.0,
@@ -39,7 +40,7 @@ class IntroPage extends StatelessWidget {
               height: 52.0,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Color(0xff7F76DF),
+                  primary: kBrandPrimaryColor,
                   // primary: Color(0xff04CD8B),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(14.0),
@@ -48,7 +49,7 @@ class IntroPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
                 },
-                child: Text(
+                child: const Text(
                   "Iniciar ahora",
                   style: TextStyle(
                     fontSize: 16.0,
