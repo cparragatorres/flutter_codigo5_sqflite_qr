@@ -47,7 +47,10 @@ class IntroPage extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
+                  // Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
+
+
+
                 },
                 child: const Text(
                   "Iniciar ahora",

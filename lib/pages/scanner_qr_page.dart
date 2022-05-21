@@ -49,7 +49,8 @@ class _ScannerQRPageState extends State<ScannerQRPage> {
     controller.scannedDataStream.listen((scanData) {
       setState(() {
         result = scanData;
-        print(result!.code);
+        print("xxxxxxxxxxxxxxxxxxxxxxxxx ${result!.code}");
+        print("yyyyyyyyyyyyyyyyyyyyyyyyy ${result!.format}");
       });
     });
   }
@@ -80,6 +81,7 @@ class _ScannerQRPageState extends State<ScannerQRPage> {
           Expanded(
             flex: 1,
             child: Container(
+              padding: const EdgeInsets.all(12.0),
               child: Column(
                 children: [
                   Text(
@@ -94,6 +96,9 @@ class _ScannerQRPageState extends State<ScannerQRPage> {
                   ),
                   Text(
                     "Por favor escanea un carnet",
+                    //"https://www.runtastic.com/blog/es/reto-de-28-dias-entrenando-en-casa-para-principiantes/ https://www.runtastic.com/blog/es/reto-de-28-dias-entrenando-en-casa-para-principiantes/",
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: kFontPrimaryColor,
                       fontWeight: FontWeight.w500,
