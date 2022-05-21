@@ -89,6 +89,7 @@ class _ScannerQRPageState extends State<ScannerQRPage> {
             child: Container(
               padding: const EdgeInsets.all(12.0),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     "Carnet escaneado: ",
@@ -124,9 +125,9 @@ class _ScannerQRPageState extends State<ScannerQRPage> {
                           borderRadius: BorderRadius.circular(14.0),
                         ),
                       ),
-                      onPressed: () {
+                      onPressed: isUrl ? () {
                         // Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
-                      },
+                      } : null,
                       child: const Text(
                         "Registrar carnet",
                         style: TextStyle(
