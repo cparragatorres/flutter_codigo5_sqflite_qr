@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_codigo5_sqflite_qr/pages/scanner_qr_page.dart';
 import 'package:flutter_codigo5_sqflite_qr/ui/general/colors.dart';
 import 'package:flutter_codigo5_sqflite_qr/ui/widgets/item_list_widget.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -59,7 +60,9 @@ class HomePage extends StatelessWidget {
               width: double.infinity,
               margin: const EdgeInsets.all(12.0),
               child: ElevatedButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> ScannerQRPage()));
+                },
                 style: ElevatedButton.styleFrom(
                   primary: kBrandPrimaryColor,
                   shape: RoundedRectangleBorder(
