@@ -13,6 +13,8 @@ class _ScannerQRPageState extends State<ScannerQRPage> {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   Barcode? result;
   QRViewController? controller;
+  String patternUrl = r'(http|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?';
+  bool isUrl = false;
 
   @override
   void reassemble() {
@@ -43,14 +45,18 @@ class _ScannerQRPageState extends State<ScannerQRPage> {
   }
 
   void _onQRViewCreated(QRViewController controller) {
+    RegExp regExp = RegExp(patternUrl);
     setState(() {
       this.controller = controller;
     });
     controller.scannedDataStream.listen((scanData) {
       setState(() {
         result = scanData;
-        print("xxxxxxxxxxxxxxxxxxxxxxxxx ${result!.code}");
-        print("yyyyyyyyyyyyyyyyyyyyyyyyy ${result!.format}");
+        if(result != null){
+          String _data = result!.code!;
+          isUrl = regExp.hasMatch(_data);
+          print("xxxxxxxxxxxxxxxxxxxxxxxx ${isUrl}");
+        }
       });
     });
   }
