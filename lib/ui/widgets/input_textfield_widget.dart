@@ -1,11 +1,15 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_codigo5_sqflite_qr/ui/general/colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class InputFieldWidget extends StatelessWidget {
-  const InputFieldWidget({Key? key}) : super(key: key);
+  String text;
+  String icon;
+
+  InputFieldWidget({
+    required this.text,
+    required this.icon,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +20,7 @@ class InputFieldWidget extends StatelessWidget {
           Row(
             children: [
               Text(
-                "Nombre completo:",
+                "$text:",
                 style: TextStyle(
                   color: kFontPrimaryColor.withOpacity(0.6),
                   fontSize: 15.0,
@@ -41,13 +45,13 @@ class InputFieldWidget extends StatelessWidget {
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white,
-                hintText: "Nombre completo",
+                hintText: text,
                 hintStyle: TextStyle(
                   fontSize: 13.0,
                   color: kFontPrimaryColor.withOpacity(0.4),
                 ),
                 prefixIcon: SvgPicture.asset(
-                  'assets/icons/bx-user.svg',
+                  'assets/icons/$icon.svg',
                   height: 12.0,
                   fit: BoxFit.scaleDown,
                   color: kFontPrimaryColor.withOpacity(0.4),

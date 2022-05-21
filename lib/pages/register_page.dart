@@ -27,27 +27,63 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(14.0),
-          child: Column(
-            children: [
-              const Text(
-                "Registrar nuevo carnet",
-                style: TextStyle(
-                  fontSize: 16.0,
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: Column(
+                children: [
+                  const Text(
+                    "Registrar nuevo carnet",
+                    style: TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+
+                  InputFieldWidget(
+                    text: "Nombres completos",
+                    icon: "bx-user",
+                  ),
+                  InputFieldWidget(
+                    text: "DNI",
+                    icon: "bx-card",
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              width: double.infinity,
+              height: 52.0,
+              margin: const EdgeInsets.all(12.0),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: kBrandPrimaryColor,
+                  // primary: Color(0xff04CD8B),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14.0),
+                  ),
+                ),
+                onPressed: () {
+
+                },
+                child: const Text(
+                  "Finalizar registro",
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
-              const SizedBox(
-                height: 20.0,
-              ),
-
-              InputFieldWidget(),
-              InputFieldWidget(),
-
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
