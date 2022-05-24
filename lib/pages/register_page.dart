@@ -5,13 +5,16 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class RegisterPage extends StatefulWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+
+  String url;
+  RegisterPage({required this.url,});
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,8 +57,23 @@ class _RegisterPageState extends State<RegisterPage> {
                     icon: "bx-card",
                   ),
 
+                  Row(
+                    children: [
+                      Text(
+                        "Carner QR: ",
+                        style: TextStyle(
+                          color: kFontPrimaryColor.withOpacity(0.6),
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 8.0,
+                  ),
                   QrImage(
-                    data: "https://www.youtube.com/watch?v=34Na4j8AVgA&ab_channel=TheWeekndVEVO",
+                    data: widget.url,
                     version: QrVersions.auto,
                     size: 220.0,
                   ),

@@ -14,7 +14,8 @@ class _ScannerQRPageState extends State<ScannerQRPage> {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   Barcode? result;
   QRViewController? controller;
-  String patternUrl = r'(http|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?';
+  String patternUrl =
+      r'(http|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?';
   bool isUrl = false;
   String _dataUrl = "";
 
@@ -54,7 +55,7 @@ class _ScannerQRPageState extends State<ScannerQRPage> {
     controller.scannedDataStream.listen((scanData) {
       setState(() {
         result = scanData;
-        if(result != null){
+        if (result != null) {
           _dataUrl = result!.code!;
           isUrl = regExp.hasMatch(_dataUrl);
         }
@@ -126,10 +127,20 @@ class _ScannerQRPageState extends State<ScannerQRPage> {
                           borderRadius: BorderRadius.circular(14.0),
                         ),
                       ),
-                      onPressed: !isUrl ? () {
-                        Navigator.pop(context);
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> RegisterPage()));
-                      } : null,
+                      onPressed: !isUrl
+                          ? () {
+                              Navigator.pop(context);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => RegisterPage(
+                                    //url: _dataUrl;
+                                    url: "https://carnetvacunacion.minsa.gob.pe/#publico/certificado/index?Tk=v3-J4cMCIPqW7QWLX5wFJPZiZTc637whHDP5NcoPhJXKxU=",
+                                  ),
+                                ),
+                              );
+                            }
+                          : null,
                       child: const Text(
                         "Registrar carnet",
                         style: TextStyle(
@@ -139,7 +150,6 @@ class _ScannerQRPageState extends State<ScannerQRPage> {
                       ),
                     ),
                   ),
-
                 ],
               ),
             ),
