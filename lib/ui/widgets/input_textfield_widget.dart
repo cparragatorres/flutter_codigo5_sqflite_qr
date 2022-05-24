@@ -10,6 +10,7 @@ class InputFieldWidget extends StatelessWidget {
   TextInputType? textInputType;
   List<FilteringTextInputFormatter>? inputFormartters;
   bool isDNI;
+  TextEditingController controller;
 
   InputFieldWidget({
     required this.text,
@@ -18,6 +19,7 @@ class InputFieldWidget extends StatelessWidget {
     this.textInputType,
     this.inputFormartters,
     required this.isDNI,
+    required this.controller,
   });
 
   @override
@@ -51,6 +53,7 @@ class InputFieldWidget extends StatelessWidget {
               ],
             ),
             child: TextFormField(
+              controller: controller,
               maxLength: isDNI ? 8 : null,
               keyboardType: isDNI ? TextInputType.number : null,
               inputFormatters: isDNI

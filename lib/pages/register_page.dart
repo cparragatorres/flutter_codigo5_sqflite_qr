@@ -18,7 +18,11 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+
   final formKey = GlobalKey<FormState>();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _dniController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -58,11 +62,13 @@ class _RegisterPageState extends State<RegisterPage> {
                       text: "Nombres completos",
                       icon: "bx-user",
                       isDNI: false,
+                      controller: _nameController,
                     ),
                     InputFieldWidget(
                       text: "DNI",
                       icon: "bx-card",
                       isDNI: true,
+                      controller: _dniController,
                     ),
                     Row(
                       children: [
@@ -106,9 +112,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 onPressed: () {
 
                   LicenseModel licenseModel = LicenseModel(
-                    name: "Juana",
-                    dni: "23232322",
-                    url: "https://carnetvacunacion.minsa.gob.pe/#publico/certificado/index?Tk=v3-J4cMCIPqW7QWLX5wFJPZiZTc637whHDP5NcoPhJXKxU=",
+                    name: _nameController.text,
+                    dni: _dniController.text,
+                    url: widget.url,
                   );
 
                   DBAdmin.db.insertLincese(licenseModel);
