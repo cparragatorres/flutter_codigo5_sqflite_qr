@@ -27,10 +27,11 @@ class DBAdmin {
     });
   }
 
-  getInfo() async{
+
+  Future<List> getLicences() async{
     final db = await getDatabase();
     List res = await db!.query("LICENSES");
-    print(res.length);
+    return res;
   }
 
 

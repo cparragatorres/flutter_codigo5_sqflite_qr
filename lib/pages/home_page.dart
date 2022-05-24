@@ -1,11 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_codigo5_sqflite_qr/db/db_admin.dart';
 import 'package:flutter_codigo5_sqflite_qr/pages/scanner_qr_page.dart';
 import 'package:flutter_codigo5_sqflite_qr/ui/general/colors.dart';
 import 'package:flutter_codigo5_sqflite_qr/ui/widgets/item_list_widget.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+
+  List licenses = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getData();
+  }
+
+  getData() async{
+    licenses = await DBAdmin.db.getLicences();
+    setState(() {
+
+    });
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -25,34 +48,28 @@ class HomePage extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(14.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Mis carnets registrados",
-                    style: TextStyle(
-                      fontSize: 16.0,
-                    ),
+          Padding(
+            padding: const EdgeInsets.all(14.0),
+            child: Column(
+              children: [
+                Text(
+                  "Mis carnets registrados",
+                  style: TextStyle(
+                    fontSize: 16.0,
                   ),
-                  ItemListWidget(),
-                  ItemListWidget(),
-                  ItemListWidget(),
-                  ItemListWidget(),
-                  ItemListWidget(),
-                  ItemListWidget(),
-                  ItemListWidget(),
-                  ItemListWidget(),
-                  ItemListWidget(),
-                  const SizedBox(
-                    height: 70.0,
-                  ),
-                ],
-              ),
+                ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 20,
+                  itemBuilder: (BuildContext context, int index){
+                    return ItemListWidget();
+                  },
+                ),
+
+              ],
             ),
           ),
+
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
