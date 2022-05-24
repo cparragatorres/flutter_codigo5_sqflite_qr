@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_codigo5_sqflite_qr/ui/general/colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class InputFieldWidget extends StatelessWidget {
   String text;
   String icon;
+  int? maxLength;
+  TextInputType? textInputType;
 
   InputFieldWidget({
     required this.text,
     required this.icon,
+    this.maxLength,
+    this.textInputType,
   });
 
   @override
@@ -42,7 +47,13 @@ class InputFieldWidget extends StatelessWidget {
               ],
             ),
             child: TextField(
+              maxLength: maxLength,
+              keyboardType: textInputType,
+              inputFormatters: [
+                FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+              ],
               decoration: InputDecoration(
+                counterText: "",
                 filled: true,
                 fillColor: Colors.white,
                 hintText: text,

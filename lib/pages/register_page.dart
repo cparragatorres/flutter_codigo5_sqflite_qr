@@ -55,6 +55,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   InputFieldWidget(
                     text: "DNI",
                     icon: "bx-card",
+                    maxLength: 8,
+                    textInputType: TextInputType.number,
                   ),
 
                   Row(
