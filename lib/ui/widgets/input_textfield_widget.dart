@@ -9,6 +9,7 @@ class InputFieldWidget extends StatelessWidget {
   int? maxLength;
   TextInputType? textInputType;
   List<FilteringTextInputFormatter>? inputFormartters;
+  bool isDNI;
 
   InputFieldWidget({
     required this.text,
@@ -16,6 +17,7 @@ class InputFieldWidget extends StatelessWidget {
     this.maxLength,
     this.textInputType,
     this.inputFormartters,
+    required this.isDNI,
   });
 
   @override
@@ -48,10 +50,14 @@ class InputFieldWidget extends StatelessWidget {
                     blurRadius: 12.0),
               ],
             ),
-            child: TextField(
-              maxLength: maxLength,
-              keyboardType: textInputType,
-              inputFormatters: inputFormartters,
+            child: TextFormField(
+              maxLength: isDNI ? 8 : null,
+              keyboardType: isDNI ? TextInputType.number : null,
+              inputFormatters: isDNI
+                  ? [
+                      FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                    ]
+                  : [],
               decoration: InputDecoration(
                 counterText: "",
                 filled: true,
@@ -76,6 +82,19 @@ class InputFieldWidget extends StatelessWidget {
                   borderSide: BorderSide.none,
                 ),
               ),
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return "El campo es obligatorio";
+                }
+
+                if(isDNI){
+                  if (value.length < 8) {
+                    return "El DNI necesita 8 números";
+                  }
+                }
+
+                return null;
+              },
             ),
           ),
         ],

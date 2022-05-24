@@ -57,15 +57,12 @@ class _RegisterPageState extends State<RegisterPage> {
                     InputFieldWidget(
                       text: "Nombres completos",
                       icon: "bx-user",
+                      isDNI: false,
                     ),
                     InputFieldWidget(
                       text: "DNI",
                       icon: "bx-card",
-                      maxLength: 8,
-                      textInputType: TextInputType.number,
-                      inputFormartters: [
-                        FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-                      ],
+                      isDNI: true,
                     ),
 
                     Row(
@@ -109,6 +106,12 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
                 onPressed: () {
+
+                  if(formKey.currentState!.validate()){
+                    //
+
+
+                  }
 
                 },
                 child: const Text(
