@@ -108,7 +108,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 onPressed: () {
 
-                  DBAdmin.db.initDB();
+                  DBAdmin.db.insertLincese();
 
                 },
                 child: const Text(
