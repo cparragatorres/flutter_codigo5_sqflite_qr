@@ -104,13 +104,16 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
                 onPressed: () {
+
                   LicenseModel licenseModel = LicenseModel(
                     name: "Juana",
                     dni: "23232322",
                     url: "https://carnetvacunacion.minsa.gob.pe/#publico/certificado/index?Tk=v3-J4cMCIPqW7QWLX5wFJPZiZTc637whHDP5NcoPhJXKxU=",
                   );
 
-                  DBAdmin.db.insertLincese();
+                  DBAdmin.db.insertLincese(licenseModel);
+
+
                 },
                 child: const Text(
                   "Finalizar registro",

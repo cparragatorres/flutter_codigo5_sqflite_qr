@@ -23,6 +23,6 @@ class LicenseModel {
     "name": name,
     "dni": dni,
     "url": url,
-  }
+  };
 
 }

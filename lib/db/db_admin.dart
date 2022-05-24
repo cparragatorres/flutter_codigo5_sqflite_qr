@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter_codigo5_sqflite_qr/models/license_model.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -26,15 +27,23 @@ class DBAdmin {
     });
   }
 
-  insertLincese() async {
+  getInfo() async{
+    final db = await getDatabase();
+    List res = await db!.query("LICENSES");
+    print(res.length);
+  }
+
+
+  insertLincese(LicenseModel model) async {
     final db = await getDatabase();
     int res = await db!.insert(
       "LICENSES",
-      {
-        "name": "Alexandra Holguino",
-        "dni": "23212233",
-        "url": "https://carnetvacunacion.minsa.gob.pe/#publico/certificado/index?Tk=v3-J4cMCIPqW7QWLX5wFJPZiZTc637whHDP5NcoPhJXKxU="
-      },
+      // {
+      //   "name": model.name,
+      //   "dni": model.dni,
+      //   "url": model.url,
+      // },
+      model.toJson(),
     );
     return res;
   }
