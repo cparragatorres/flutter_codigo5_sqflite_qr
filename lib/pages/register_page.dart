@@ -18,11 +18,9 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-
   final formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _dniController = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -111,25 +109,34 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 onPressed: () {
 
-                  if(formKey.currentState!.validate()){
-
+                  if (formKey.currentState!.validate()) {
                     LicenseModel licenseModel = LicenseModel(
                       name: _nameController.text,
                       dni: _dniController.text,
                       url: widget.url,
                     );
-
-                    DBAdmin.db.insertLincese(licenseModel).then((value){
-                      if(value > 0){
-
+                    DBAdmin.db.insertLincese(licenseModel).then((value) {
+                      if (value > 0) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            backgroundColor: Color(0xff06d6a0),
+                            content: Row(
+                              children: const [
+                                Icon(
+                                  Icons.check,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(
+                                  width: 8.0,
+                                ),
+                                Text("Carnet registrado con éxito.")
+                              ],
+                            ),
+                          ),
+                        );
                       }
                     });
-
                   }
-
-
-
-
                 },
                 child: const Text(
                   "Finalizar registro",
