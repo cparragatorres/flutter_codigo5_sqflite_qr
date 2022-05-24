@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_codigo5_sqflite_qr/ui/general/colors.dart';
 import 'package:flutter_codigo5_sqflite_qr/ui/widgets/input_textfield_widget.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -57,6 +58,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     icon: "bx-card",
                     maxLength: 8,
                     textInputType: TextInputType.number,
+                    inputFormartters: [
+                      FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                    ],
                   ),
 
                   Row(

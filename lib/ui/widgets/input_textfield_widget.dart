@@ -8,12 +8,14 @@ class InputFieldWidget extends StatelessWidget {
   String icon;
   int? maxLength;
   TextInputType? textInputType;
+  List<FilteringTextInputFormatter>? inputFormartters;
 
   InputFieldWidget({
     required this.text,
     required this.icon,
     this.maxLength,
     this.textInputType,
+    this.inputFormartters,
   });
 
   @override
@@ -49,9 +51,7 @@ class InputFieldWidget extends StatelessWidget {
             child: TextField(
               maxLength: maxLength,
               keyboardType: textInputType,
-              inputFormatters: [
-                FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-              ],
+              inputFormatters: inputFormartters,
               decoration: InputDecoration(
                 counterText: "",
                 filled: true,
