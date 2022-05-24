@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_codigo5_sqflite_qr/db/db_admin.dart';
 import 'package:flutter_codigo5_sqflite_qr/ui/general/colors.dart';
 import 'package:flutter_codigo5_sqflite_qr/ui/widgets/input_textfield_widget.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -107,11 +108,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 onPressed: () {
 
-                  if(formKey.currentState!.validate()){
-                    //
-
-
-                  }
+                  DBAdmin.db.initDB();
 
                 },
                 child: const Text(
