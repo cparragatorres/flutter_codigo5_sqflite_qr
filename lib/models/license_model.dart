@@ -1,11 +1,11 @@
 class LicenseModel {
-  int id;
+  int? id;
   String name;
   String dni;
   String url;
 
   LicenseModel({
-    required this.id,
+    this.id,
     required this.name,
     required this.dni,
     required this.url,

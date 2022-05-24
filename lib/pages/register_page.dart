@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_codigo5_sqflite_qr/db/db_admin.dart';
+import 'package:flutter_codigo5_sqflite_qr/models/license_model.dart';
 import 'package:flutter_codigo5_sqflite_qr/ui/general/colors.dart';
 import 'package:flutter_codigo5_sqflite_qr/ui/widgets/input_textfield_widget.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class RegisterPage extends StatefulWidget {
-
   String url;
-  RegisterPage({required this.url,});
+  RegisterPage({
+    required this.url,
+  });
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-
-
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -54,7 +54,6 @@ class _RegisterPageState extends State<RegisterPage> {
                     const SizedBox(
                       height: 20.0,
                     ),
-
                     InputFieldWidget(
                       text: "Nombres completos",
                       icon: "bx-user",
@@ -65,7 +64,6 @@ class _RegisterPageState extends State<RegisterPage> {
                       icon: "bx-card",
                       isDNI: true,
                     ),
-
                     Row(
                       children: [
                         Text(
@@ -86,7 +84,6 @@ class _RegisterPageState extends State<RegisterPage> {
                       version: QrVersions.auto,
                       size: 220.0,
                     ),
-
                   ],
                 ),
               ),
@@ -107,9 +104,13 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
                 onPressed: () {
+                  LicenseModel licenseModel = LicenseModel(
+                    name: "Juana",
+                    dni: "23232322",
+                    url: "https://carnetvacunacion.minsa.gob.pe/#publico/certificado/index?Tk=v3-J4cMCIPqW7QWLX5wFJPZiZTc637whHDP5NcoPhJXKxU=",
+                  );
 
                   DBAdmin.db.insertLincese();
-
                 },
                 child: const Text(
                   "Finalizar registro",
