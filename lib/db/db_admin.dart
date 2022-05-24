@@ -34,7 +34,7 @@ class DBAdmin {
   }
 
 
-  insertLincese(LicenseModel model) async {
+  Future<int> insertLincese(LicenseModel model) async {
     final db = await getDatabase();
     int res = await db!.insert(
       "LICENSES",

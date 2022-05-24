@@ -84,6 +84,14 @@ class InputFieldWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12.0),
                   borderSide: BorderSide.none,
                 ),
+                focusedErrorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                  borderSide: BorderSide.none,
+                ),
+                errorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                  borderSide: BorderSide.none,
+                ),
               ),
               validator: (value) {
                 if (value!.isEmpty) {

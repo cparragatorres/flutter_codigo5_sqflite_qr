@@ -111,13 +111,23 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 onPressed: () {
 
-                  LicenseModel licenseModel = LicenseModel(
-                    name: _nameController.text,
-                    dni: _dniController.text,
-                    url: widget.url,
-                  );
+                  if(formKey.currentState!.validate()){
 
-                  DBAdmin.db.insertLincese(licenseModel);
+                    LicenseModel licenseModel = LicenseModel(
+                      name: _nameController.text,
+                      dni: _dniController.text,
+                      url: widget.url,
+                    );
+
+                    DBAdmin.db.insertLincese(licenseModel).then((value){
+                      if(value > 0){
+
+                      }
+                    });
+
+                  }
+
+
 
 
                 },
