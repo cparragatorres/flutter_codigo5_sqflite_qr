@@ -16,6 +16,9 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
 
+
+  final formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,54 +40,57 @@ class _RegisterPageState extends State<RegisterPage> {
           SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(14.0),
-              child: Column(
-                children: [
-                  const Text(
-                    "Registrar nuevo carnet",
-                    style: TextStyle(
-                      fontSize: 16.0,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20.0,
-                  ),
-
-                  InputFieldWidget(
-                    text: "Nombres completos",
-                    icon: "bx-user",
-                  ),
-                  InputFieldWidget(
-                    text: "DNI",
-                    icon: "bx-card",
-                    maxLength: 8,
-                    textInputType: TextInputType.number,
-                    inputFormartters: [
-                      FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-                    ],
-                  ),
-
-                  Row(
-                    children: [
-                      Text(
-                        "Carner QR: ",
-                        style: TextStyle(
-                          color: kFontPrimaryColor.withOpacity(0.6),
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.w400,
-                        ),
+              child: Form(
+                key: formKey,
+                child: Column(
+                  children: [
+                    const Text(
+                      "Registrar nuevo carnet",
+                      style: TextStyle(
+                        fontSize: 16.0,
                       ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 8.0,
-                  ),
-                  QrImage(
-                    data: widget.url,
-                    version: QrVersions.auto,
-                    size: 220.0,
-                  ),
+                    ),
+                    const SizedBox(
+                      height: 20.0,
+                    ),
 
-                ],
+                    InputFieldWidget(
+                      text: "Nombres completos",
+                      icon: "bx-user",
+                    ),
+                    InputFieldWidget(
+                      text: "DNI",
+                      icon: "bx-card",
+                      maxLength: 8,
+                      textInputType: TextInputType.number,
+                      inputFormartters: [
+                        FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                      ],
+                    ),
+
+                    Row(
+                      children: [
+                        Text(
+                          "Carner QR: ",
+                          style: TextStyle(
+                            color: kFontPrimaryColor.withOpacity(0.6),
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 8.0,
+                    ),
+                    QrImage(
+                      data: widget.url,
+                      version: QrVersions.auto,
+                      size: 220.0,
+                    ),
+
+                  ],
+                ),
               ),
             ),
           ),
