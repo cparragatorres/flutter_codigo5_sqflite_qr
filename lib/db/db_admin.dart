@@ -34,6 +34,11 @@ class DBAdmin {
     return res;
   }
 
+  Future<List<LicenseModel>> getLicenses2() async{
+
+  }
+
+
 
   Future<int> insertLincese(LicenseModel model) async {
     final db = await getDatabase();

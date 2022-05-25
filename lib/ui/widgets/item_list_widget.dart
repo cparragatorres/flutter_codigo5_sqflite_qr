@@ -3,9 +3,15 @@ import 'package:flutter_codigo5_sqflite_qr/ui/general/colors.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ItemListWidget extends StatelessWidget {
-  const ItemListWidget({
-    Key? key,
-  }) : super(key: key);
+  String name;
+  String dni;
+  String url;
+
+  ItemListWidget({
+    required this.name,
+    required this.dni,
+    required this.url,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -52,11 +58,10 @@ class ItemListWidget extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  "Elvis Barrionuevo asdasdas asdadasd asdasdsad asdasd",
+                  name,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                      fontSize: 15.0, fontWeight: FontWeight.w500),
+                  style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w500),
                 ),
                 const SizedBox(
                   height: 2.0,
@@ -81,9 +86,8 @@ class ItemListWidget extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  "43115433",
-                  style: TextStyle(
-                      fontSize: 15.0, fontWeight: FontWeight.w500),
+                  dni,
+                  style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w500),
                 ),
               ],
             ),

@@ -52,18 +52,25 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(14.0),
             child: Column(
               children: [
-                Text(
+                const Text(
                   "Mis carnets registrados",
                   style: TextStyle(
                     fontSize: 16.0,
                   ),
                 ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: 20,
-                  itemBuilder: (BuildContext context, int index){
-                    return ItemListWidget();
-                  },
+                Expanded(
+                  child: ListView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: licenses.length,
+                    itemBuilder: (BuildContext context, int index){
+                      return ItemListWidget(
+                        name: licenses[index]["name"],
+                        dni: licenses[index]["dni"],
+                        url: licenses[index]["url"],
+                      );
+                    },
+                  ),
                 ),
 
               ],
