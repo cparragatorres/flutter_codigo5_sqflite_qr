@@ -60,22 +60,27 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Expanded(
-                  child: ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: licenses.length,
-                    itemBuilder: (BuildContext context, int index){
-                      return ItemListWidget(
-                        // name: licenses[index].name,
-                        // dni: licenses[index].dni,
-                        // url: licenses[index].url,
-
-                        // licenseModel: licenses[index],
-
-                        licenseModel: licenses[index],
-
-                      );
+                  child: RefreshIndicator(
+                    onRefresh: () async{
+                      getData();
                     },
+                    child: ListView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: licenses.length,
+                      itemBuilder: (BuildContext context, int index){
+                        return ItemListWidget(
+                          // name: licenses[index].name,
+                          // dni: licenses[index].dni,
+                          // url: licenses[index].url,
+
+                          // licenseModel: licenses[index],
+
+                          licenseModel: licenses[index],
+
+                        );
+                      },
+                    ),
                   ),
                 ),
 
