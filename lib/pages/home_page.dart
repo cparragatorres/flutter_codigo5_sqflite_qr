@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {});
   }
 
-  showDetail() {
+  showDetail(LicenseModel model) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
               Row(
                 children: [
                   Text(
-                    "Elvis Barrionuevo",
+                    model.name,
                   ),
                 ],
               ),
@@ -83,22 +83,33 @@ class _HomePageState extends State<HomePage> {
               Row(
                 children: [
                   Text(
-                    "23112222",
+                    model.dni
                   ),
                 ],
               ),
-
+              const SizedBox(
+                height: 8.0,
+              ),
+              Row(
+                children: [
+                  Text(
+                    "Código QR:",
+                    style: TextStyle(
+                      color: kFontPrimaryColor.withOpacity(0.7,),
+                      fontSize: 13.0,
+                    ),
+                  ),
+                ],
+              ),
               SizedBox(
                 height: 160,
                 width: 160,
                 child: QrImage(
-                  data: "SDSADSADASDADSAD",
+                  data: model.url,
                   version: QrVersions.auto,
                   size: 100.0,
                 ),
               ),
-
-
             ],
           ),
         );
@@ -155,7 +166,7 @@ class _HomePageState extends State<HomePage> {
                                 // licenseModel: licenses[index],
                                 licenseModel: licenses[index],
                                 onPressed: () {
-                                  showDetail();
+                                  showDetail(licenses[index]);
                                 },
                               );
                             },
