@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                             getData();
                           },
                           child: ListView.builder(
-                            physics: const BouncingScrollPhysics(),
+                            // physics: const BouncingScrollPhysics(),
                             shrinkWrap: true,
                             itemCount: licenses.length,
                             itemBuilder: (BuildContext context, int index) {
