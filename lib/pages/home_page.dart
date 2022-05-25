@@ -26,6 +26,11 @@ class _HomePageState extends State<HomePage> {
     setState(() {});
   }
 
+  showDetail(){
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,10 +77,11 @@ class _HomePageState extends State<HomePage> {
                                 // name: licenses[index].name,
                                 // dni: licenses[index].dni,
                                 // url: licenses[index].url,
-
                                 // licenseModel: licenses[index],
-
                                 licenseModel: licenses[index],
+                                onPressed: (){
+                                  showDetail();
+                                },
                               );
                             },
                           ),

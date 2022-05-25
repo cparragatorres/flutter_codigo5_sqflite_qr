@@ -9,6 +9,7 @@ class ItemListWidget extends StatelessWidget {
   // String url;
 
   LicenseModel licenseModel;
+  Function onPressed;
 
   //LicenseModel? licenseModel;
 
@@ -18,7 +19,7 @@ class ItemListWidget extends StatelessWidget {
     // required this.url,
 
     required this.licenseModel,
-
+    required this.onPressed,
     //this.licenseModel,
   });
 
@@ -104,7 +105,9 @@ class ItemListWidget extends StatelessWidget {
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              onPressed();
+            },
             icon: SvgPicture.asset(
               'assets/icons/bx-link.svg',
               color: kFontPrimaryColor,
