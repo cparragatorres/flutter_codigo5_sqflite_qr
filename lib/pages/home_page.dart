@@ -26,10 +26,21 @@ class _HomePageState extends State<HomePage> {
     setState(() {});
   }
 
-  showDetail(){
+  showDetail() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context){
+        return AlertDialog(
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
 
+            ],
+          ),
+        );
+      },
+    );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                                 // url: licenses[index].url,
                                 // licenseModel: licenses[index],
                                 licenseModel: licenses[index],
-                                onPressed: (){
+                                onPressed: () {
                                   showDetail();
                                 },
                               );
@@ -88,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       )
                     : Center(
-                      child: Column(
+                        child: Column(
                           children: [
                             SizedBox(
                               height: MediaQuery.of(context).size.height * 0.2,
@@ -109,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ],
                         ),
-                    ),
+                      ),
               ],
             ),
           ),
