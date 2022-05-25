@@ -5,6 +5,8 @@ import 'package:flutter_codigo5_sqflite_qr/pages/scanner_qr_page.dart';
 import 'package:flutter_codigo5_sqflite_qr/ui/general/colors.dart';
 import 'package:flutter_codigo5_sqflite_qr/ui/widgets/item_list_widget.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -29,11 +31,73 @@ class _HomePageState extends State<HomePage> {
   showDetail() {
     showDialog(
       context: context,
-      builder: (BuildContext context){
+      builder: (BuildContext context) {
         return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(14.0),
+          ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              Text(
+                "Detalle del carnet",
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(
+                height: 12.0,
+              ),
+              Row(
+                children: [
+                  Text(
+                    "Nombres:",
+                    style: TextStyle(
+                      color: kFontPrimaryColor.withOpacity(0.7,),
+                      fontSize: 13.0,
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Text(
+                    "Elvis Barrionuevo",
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 8.0,
+              ),
+              Row(
+                children: [
+                  Text(
+                    "Nro. DNI:",
+                    style: TextStyle(
+                      color: kFontPrimaryColor.withOpacity(0.7,),
+                      fontSize: 13.0,
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Text(
+                    "23112222",
+                  ),
+                ],
+              ),
+
+              SizedBox(
+                height: 160,
+                width: 160,
+                child: QrImage(
+                  data: "SDSADSADASDADSAD",
+                  version: QrVersions.auto,
+                  size: 100.0,
+                ),
+              ),
+
 
             ],
           ),
