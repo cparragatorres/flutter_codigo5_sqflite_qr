@@ -35,7 +35,14 @@ class DBAdmin {
   }
 
   Future<List<LicenseModel>> getLicenses2() async{
-
+    final db = await getDatabase();
+    List res = await db!.query("LICENSES");
+    List<LicenseModel> licenses = [];
+    // res.forEach((element) {
+    //   licenses.add(LicenseModel.fromJson(element));
+    // });
+    licenses = res.map((e) => LicenseModel.fromJson(e)).toList();
+    return licenses;
   }
 
 
