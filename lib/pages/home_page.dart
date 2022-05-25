@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_codigo5_sqflite_qr/db/db_admin.dart';
+import 'package:flutter_codigo5_sqflite_qr/models/license_model.dart';
 import 'package:flutter_codigo5_sqflite_qr/pages/scanner_qr_page.dart';
 import 'package:flutter_codigo5_sqflite_qr/ui/general/colors.dart';
 import 'package:flutter_codigo5_sqflite_qr/ui/widgets/item_list_widget.dart';
@@ -12,7 +13,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  List licenses = [];
+  List<LicenseModel> licenses = [];
 
   @override
   void initState() {
@@ -22,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   getData() async{
-    licenses = await DBAdmin.db.getLicences();
+    licenses = await DBAdmin.db.getLicenses2();
     setState(() {
 
     });
@@ -65,9 +66,9 @@ class _HomePageState extends State<HomePage> {
                     itemCount: licenses.length,
                     itemBuilder: (BuildContext context, int index){
                       return ItemListWidget(
-                        name: licenses[index]["name"],
-                        dni: licenses[index]["dni"],
-                        url: licenses[index]["url"],
+                        name: licenses[index].name,
+                        dni: licenses[index].dni,
+                        url: licenses[index].url,
                       );
                     },
                   ),
