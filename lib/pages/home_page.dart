@@ -66,9 +66,14 @@ class _HomePageState extends State<HomePage> {
                     itemCount: licenses.length,
                     itemBuilder: (BuildContext context, int index){
                       return ItemListWidget(
-                        name: licenses[index].name,
-                        dni: licenses[index].dni,
-                        url: licenses[index].url,
+                        // name: licenses[index].name,
+                        // dni: licenses[index].dni,
+                        // url: licenses[index].url,
+
+                        // licenseModel: licenses[index],
+
+                        licenseModel: licenses[index],
+
                       );
                     },
                   ),

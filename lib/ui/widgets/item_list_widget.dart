@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_codigo5_sqflite_qr/models/license_model.dart';
 import 'package:flutter_codigo5_sqflite_qr/ui/general/colors.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ItemListWidget extends StatelessWidget {
-  String name;
-  String dni;
-  String url;
+  // String name;
+  // String dni;
+  // String url;
+
+  LicenseModel licenseModel;
+
+  //LicenseModel? licenseModel;
 
   ItemListWidget({
-    required this.name,
-    required this.dni,
-    required this.url,
+    // required this.name,
+    // required this.dni,
+    // required this.url,
+
+    required this.licenseModel,
+
+    //this.licenseModel,
   });
 
   @override
@@ -58,7 +67,8 @@ class ItemListWidget extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  name,
+                  // licenseModel?.name ?? "-",
+                  licenseModel.name,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w500),
@@ -86,7 +96,8 @@ class ItemListWidget extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  dni,
+                  // licenseModel?.dni ?? "-",
+                  licenseModel.dni,
                   style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w500),
                 ),
               ],
