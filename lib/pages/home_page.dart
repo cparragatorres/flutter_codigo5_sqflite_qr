@@ -12,7 +12,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   List<LicenseModel> licenses = [];
 
   @override
@@ -22,14 +21,10 @@ class _HomePageState extends State<HomePage> {
     getData();
   }
 
-  getData() async{
+  getData() async {
     licenses = await DBAdmin.db.getLicenses2();
-    setState(() {
-
-    });
+    setState(() {});
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +47,7 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: const EdgeInsets.all(14.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
                   "Mis carnets registrados",
@@ -59,35 +55,58 @@ class _HomePageState extends State<HomePage> {
                     fontSize: 16.0,
                   ),
                 ),
-                Expanded(
-                  child: RefreshIndicator(
-                    onRefresh: () async{
-                      getData();
-                    },
-                    child: ListView.builder(
-                      physics: const BouncingScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: licenses.length,
-                      itemBuilder: (BuildContext context, int index){
-                        return ItemListWidget(
-                          // name: licenses[index].name,
-                          // dni: licenses[index].dni,
-                          // url: licenses[index].url,
+                licenses.isNotEmpty
+                    ? Expanded(
+                        child: RefreshIndicator(
+                          strokeWidth: 2,
+                          color: kBrandPrimaryColor,
+                          onRefresh: () async {
+                            getData();
+                          },
+                          child: ListView.builder(
+                            physics: const BouncingScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: licenses.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return ItemListWidget(
+                                // name: licenses[index].name,
+                                // dni: licenses[index].dni,
+                                // url: licenses[index].url,
 
-                          // licenseModel: licenses[index],
+                                // licenseModel: licenses[index],
 
-                          licenseModel: licenses[index],
-
-                        );
-                      },
+                                licenseModel: licenses[index],
+                              );
+                            },
+                          ),
+                        ),
+                      )
+                    : Center(
+                      child: Column(
+                          children: [
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.2,
+                            ),
+                            Image.asset(
+                              'assets/images/box.png',
+                              height: 100,
+                            ),
+                            const SizedBox(
+                              height: 8.0,
+                            ),
+                            Text(
+                              "Aún no tienes carnets registrados.",
+                              style: TextStyle(
+                                fontSize: 14.0,
+                                color: kFontPrimaryColor.withOpacity(0.7),
+                              ),
+                            ),
+                          ],
+                        ),
                     ),
-                  ),
-                ),
-
               ],
             ),
           ),
-
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
@@ -96,7 +115,8 @@ class _HomePageState extends State<HomePage> {
               margin: const EdgeInsets.all(12.0),
               child: ElevatedButton.icon(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> ScannerQRPage()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ScannerQRPage()));
                 },
                 style: ElevatedButton.styleFrom(
                   primary: kBrandPrimaryColor,

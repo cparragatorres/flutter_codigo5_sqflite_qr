@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_codigo5_sqflite_qr/db/db_admin.dart';
 import 'package:flutter_codigo5_sqflite_qr/models/license_model.dart';
+import 'package:flutter_codigo5_sqflite_qr/pages/home_page.dart';
 import 'package:flutter_codigo5_sqflite_qr/ui/general/colors.dart';
 import 'package:flutter_codigo5_sqflite_qr/ui/widgets/input_textfield_widget.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -134,7 +135,8 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
                           ),
                         );
-                        Navigator.pop(context);
+                        // Navigator.pop(context);
+                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>HomePage()), (route) => false);
                       }
                     });
                   }
